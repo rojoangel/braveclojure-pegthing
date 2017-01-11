@@ -16,3 +16,8 @@
   "Is the number triangular? e.g. 1, 3, 6, 10, 15, etc"
   [n]
   (= n (last (take-while #(>= n %) tri))))
+
+(defn row-tri
+  "The triangular number at the end of row n"
+  [n]
+  (last (take n tri)))

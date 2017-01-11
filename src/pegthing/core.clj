@@ -45,3 +45,10 @@
     (if-not (or (triangular? neighbour) (triangular? pos))
       (connect board max-pos pos neighbour destination)
       board)))
+
+(defn connect-down-left
+  [board max-pos pos]
+  (let [row (row-num pos)
+        neighbour (+ row pos)
+        destination (+ 1 row neighbour)]
+    (connect board max-pos pos neighbour destination)))

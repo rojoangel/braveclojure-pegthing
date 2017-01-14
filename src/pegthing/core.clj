@@ -87,3 +87,8 @@
   "Take the peg at given position out of the board"
   [board pos]
   (assoc-in board [pos :pegged] false))
+
+(defn place-peg
+  "Put a peg in the board at given position"
+  [board pos]
+  (assoc-in board [pos :pegged] true))

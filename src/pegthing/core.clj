@@ -59,3 +59,12 @@
         neighbour (+ 1 row pos)
         destination (+ 2 row neighbour)]
     (connect board max-pos pos neighbour destination)))
+
+(defn add-pos
+  "Pegs the position and performs connections"
+  [board max-pos pos]
+  (let [pegged-board (assoc-in board [pos :pegged] true)]
+    (reduce (fn [new-board connection-creation-fn]
+              (connection-creation-fn new-board max-pos pos))
+            pegged-board
+            [connect-right connect-down-left connect-down-right])))

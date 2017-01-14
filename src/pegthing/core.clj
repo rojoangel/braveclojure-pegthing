@@ -159,3 +159,9 @@
   [row-num]
   (range (inc (or (row-tri (dec row-num)) 0))
          (inc (row-tri row-num))))
+
+(defn row-padding
+  "String of spaces to add to the beginning of a row to center it"
+  [row-num rows]
+  (let [pad-length (/ (* (- rows row-num) pos-chars) 2)]
+    (apply str (take pad-length (repeat " ")))))

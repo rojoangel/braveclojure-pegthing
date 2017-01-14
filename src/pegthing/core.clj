@@ -92,3 +92,8 @@
   "Put a peg in the board at given position"
   [board pos]
   (assoc-in board [pos :pegged] true))
+
+(defn move-peg
+  "Take peg out of p1 and place it in p2"
+  [board p1 p2]
+  (place-peg (remove-peg board p1) p2))

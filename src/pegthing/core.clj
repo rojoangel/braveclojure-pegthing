@@ -124,7 +124,7 @@
   "Do any of the pegged positions have valid moves?"
   [board]
   (some (comp not-empty (partial valid-moves board))
-         (map first (filter #(get (second %) :pegged) board))))
+        (map first (filter #(get (second %) :pegged) board))))
 
 (def alpha-start 97)
 (def alpha-end 123)
@@ -171,3 +171,8 @@
   (str (row-padding row-num (:rows board))
        (clojure.string/join " " (map (partial render-pos board)
                                      (row-positions row-num)))))
+
+(defn print-board
+  [board]
+  (doseq [row-num (range 1 (inc (:rows board)))]
+    (println (render-row board row-num))))

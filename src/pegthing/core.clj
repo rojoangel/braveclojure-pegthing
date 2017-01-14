@@ -233,3 +233,10 @@
         (do
           (println "Bye!")
           (System/exit 0))))))
+
+(defn prompt-empty-peg
+  [board]
+  (println "Here's your board:")
+  (print-board board)
+  (println "Remove which peg? [e]")
+  (prompt-move (remove-peg board (letter->pos (get-input "e")))))

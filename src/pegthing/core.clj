@@ -82,3 +82,8 @@
   "Does the position have a peg in it?"
   [board pos]
   (get-in board [pos :pegged]))
+
+(defn remove-peg
+  "Take the peg at given position out of the board"
+  [board pos]
+  (assoc-in board [pos :pegged] false))

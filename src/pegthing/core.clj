@@ -181,3 +181,12 @@
   "Converts a letter string to the corresponding position number"
   [letter]
   (inc (- (int (first letter)) alpha-start)))
+
+(defn get-input
+  "Waits for user to enter text and hit enter, then cleans the input"
+  ([] (get-input nil))
+  ([default]
+   (let [input (clojure.string/trim (read-line))]
+     (if (empty? input)
+       default
+       (clojure.string/lower-case input)))))

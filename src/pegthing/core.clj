@@ -153,3 +153,9 @@
        (if (get-in board [pos :pegged])
          (colorize "0" :blue)
          (colorize "-" :red))))
+
+(defn row-positions
+  "Return all positions in the given row"
+  [row-num]
+  (range (inc (or (row-tri (dec row-num)) 0))
+         (inc (row-tri row-num))))

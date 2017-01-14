@@ -190,3 +190,9 @@
      (if (empty? input)
        default
        (clojure.string/lower-case input)))))
+
+(defn characters-as-strings
+  "Given a string, return a collection consisting of each individual
+  character"
+  [string]
+  (re-seq #"[a-zA-Z]" string))

@@ -68,3 +68,12 @@
               (connection-creation-fn new-board max-pos pos))
             pegged-board
             [connect-right connect-down-left connect-down-right])))
+
+(defn new-board
+  "Creates a new board with the given number of rows"
+  [rows]
+  (let [initial-board {:rows rows}
+        max-pos (row-tri rows)]
+    (reduce (fn [board pos] (add-pos board max-pos pos))
+            initial-board
+            (range 1 (inc max-pos)))))

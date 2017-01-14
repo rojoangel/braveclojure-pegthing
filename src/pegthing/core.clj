@@ -146,3 +146,10 @@
   "Apply ansi color to text"
   [text color]
   (str (ansi color) text (ansi :reset)))
+
+(defn render-pos
+  [board pos]
+  (str (nth letters (dec pos))
+       (if (get-in board [pos :pegged])
+         (colorize "0" :blue)
+         (colorize "-" :red))))

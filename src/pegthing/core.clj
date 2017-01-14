@@ -176,3 +176,8 @@
   [board]
   (doseq [row-num (range 1 (inc (:rows board)))]
     (println (render-row board row-num))))
+
+(defn letter->pos
+  "Converts a letter string to the corresponding position number"
+  [letter]
+  (inc (- (int (first letter)) alpha-start)))

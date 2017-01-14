@@ -1,7 +1,7 @@
 (ns pegthing.core
   (:gen-class))
 
-(declare successful-move prompt-move game-over query-rows)
+(declare successful-move prompt-move game-over prompt-rows)
 
 (defn tri*
   "Generates lazy sequence of triangular numbers"
@@ -219,3 +219,17 @@
     (if-let [new-board (make-move board (first input) (second input))]
       (user-entered-valid-move new-board)
       (user-entered-invalid-move board))))
+
+(defn game-over
+  "Announce the game is over and prompt to play again"
+  [board]
+  (let [remaining-pegs (count (filter :pegged (vals board)))]
+    (println "Game over! You had" remaining-pegs "pegs left:")
+    (print-board board)
+    (println "Play again? y/n [y]")
+    (let [input (get-input "y")]
+      (if (= "y" input)
+        (prompt-rows)
+        (do
+          (println "Bye!")
+          (System/exit 0))))))
